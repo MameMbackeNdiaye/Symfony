@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion Roles {% endblock %}
+
+{% block body %}
+<div class="col-md-6 col-md-offset-3 mt-4 bg-info">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="section_title text-center text-light mb-55 mt-4">
+                <h3><span>Liste des Roles</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container row mx-auto mt-4">
+    <div class="col-md-12 col-md-offset-3 mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section_title text-center mb-55 mt-4">
+                    <h3><span>Liste des roles</span></h3>
+                </div>
+            </div>
+        </div>
+        <div class="card-body ">
+            <div class=" row form-contact contact_form bg-light">
+                <table class="table  table-bordered ">
+                    <thead class="">
+                        <tr class="mx-auto bg-info ">
+                            <th>Identifiant</th>
+                            <th>Nom du role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for r in roles %}
+                        <tr>
+                            <th scope="row">{{ r.id }}</th>
+                            <td class=""><p>{{ r.nom }}</p></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>    
+
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des sorties {% endblock %}
+
+{% block body %}
+<div class="col-md-6 col-md-offset-3 mt-4 bg-info">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="section_title text-center text-light mb-55 mt-4">
+                <h3><span>Gestion des Sorites</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container row mx-auto mt-4 ">
+    <div class="panel panel-primary  col-md-6 mt-4">
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-6">
+                <div class="section_title text-center mb-55">
+                    <h3><span>Ajout Sorties</span></h3>
+                </div>
+            </div>
+        </div>
+            <div class=" bg-light ">
+                <div class="row">                                
+                    <div class="mx-auto mb-100">
+                    {% if errormessage is defined %}
+                        <div class="alert alert-danger">{{errormessage}}</div>
+                    {% endif %}  
+                        {{ form(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="col-md-6 col-md-offset-3 mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section_title text-center mb-55 mt-4">
+                    <h3><span>Liste des sorties</span></h3>
+                </div>
+            </div>
+        </div>
+                <div class=" row form-contact contact_form">
+                    <table class="table  table-bordered ">
+                        <thead class="thead-dark ">
+                            <tr>
+                                <th class="bg-info">Identifiant</th>
+                                <th class="mx-auto">Date</th>
+                                <th class="mx-auto">Quantite</th>
+                                <th class="mx-auto">produit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for s in sorties %}
+                        <tr>                         
+                            <th scope="row">{{ s.id }}</th>
+                            <td><p>{{ s.date|date('d/m/y') }}</p></td>
+                            <td><p>{{ s.quantite }}</p></td>
+                            <td><p>{{ s.produit }}</p></td>   
+                        </tr>
+                        {% endfor %} 
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>
+
+{% endblock %}

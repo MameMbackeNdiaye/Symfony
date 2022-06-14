@@ -1,0 +1,88 @@
+
+    <!-- header-start -->
+ 
+    <header>
+        <div class="header-area ">
+            <div class="header-top_area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12 col-lg-8">
+                            <div class="short_contact_list">
+                                <ul>
+                                    <li><a href="#"> <i class="fa fa-phone"></i>+221 33 848 09 09</a></li>
+                                    <li><a href="#"> <i class="fa fa-envelope"></i>gstock@gmail.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sticky-header" class="main-header-area">
+                <div class="">
+                    <div class="row align-items-center">
+                        <div class="col-xl-3 col-lg-3">
+                            <div>
+                            {% if app.user %}
+                                <h4><a href="{{ path('app_login') }}" class="font-weight-bold text-light">{{ app.user.name }} <p class="font-italic">en ligne</p></a></h4>
+                            {% endif %}
+                            </div>
+                        </div>
+                        
+                <div class="col-xl-9 col-lg-9">
+                    <div class="main-menu">
+                            <!--
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="C:/Symfony/Appstock/public/assets/About.html">Produits</a></li>
+                                        <li><a href="C:/Symfony/Appstock/public/assets/contact.html">Categories</a></li>
+                                        <li><a href="C:/Symfony/Appstock/public/assets/contact.html">Personnel</a></li>
+                                        <li><a href="C:/Symfony/Appstock/public/assets/contact.html">Flux</a></li>
+                                    </ul>
+                                </nav>
+                                -->
+                        {% if app.user %}
+                            <div class="Appointment">
+                                 <nav>
+                                    <ul id="navigation">
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                         <li><a href="{{ path('app_register') }}">Personnel</a></li>
+                                         <li><a href="{{ path('app_roles') }}">Role</a></li>
+                                         <li><a href="{{ path('app_sorties') }}">Sortie</a></li>
+                                        {% else %}
+                                            {% if is_granted('ROLE_VENDEUR') %}
+                                                <li><a href="{{ path('app_sorties') }}">Sortie</a></li>
+                                                
+                                            {% else %}
+                                                {% if is_granted('ROLE_GESTION_STOCK') %}
+                                                  <li><a href="{{ path('app_produits') }}">Produit</a></li>
+                                                  <li><a href="{{ path('app_categories') }}">Categorie</a></li>
+                                                  <li><a href="{{ path('app_entrees') }}">Entree</a></li>
+                                                  <li><a href="{{ path('app_sorties') }}">Sortie</a></li>
+                                                {% endif %}
+                                            {% endif %}  
+                                         {% endif %}
+                                    </ul>
+                                </nav>           
+                                <div class="Appointment">
+                                    <div class="book_btn d-none d-lg-block">
+                                       <a href="{{ path('app_logout') }}">Se deconnecter</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="Appointment">
+                                <div class="book_btn d-none d-lg-block">
+                                    <a href="{{ path('app_login') }}">Se connecter</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                </div>
+            </div>
+            
+            <div class="col-12">
+                <div class="mobile_menu d-block d-lg-none"></div>
+            </div>
+        </div>
+    </header>
+
+

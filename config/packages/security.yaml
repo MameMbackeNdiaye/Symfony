@@ -4,14 +4,25 @@ security:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+        # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
-            provider: users_in_memory
+            provider: app_user_provider
+            custom_authenticator: App\Security\UsersAuthentificationAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+            access_denied_handler: App\Security\AccessDeniedHandler
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -24,6 +35,19 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+                # require ROLE_ADMIN for /admin*
+           - { path: '^/produits/liste$', roles: ROLE_GESTION_STOCK }
+           - { path: '^/sorties$', roles: [ROLE_ADMIN, ROLE_VENDEUR,ROLE_GESTION_STOCK] }
+           - { path: ^/entrees$, roles: ROLE_GESTION_STOCK }
+           - { path: ^/Personnel/liste$, roles: ROLE_ADMIN }
+           - { path: ^/roles/liste$, roles: ROLE_ADMIN }
+           - { path: ^/categories/liste$, roles: ROLE_GESTION_STOCK }
+
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_ADMIN]
+        ROLE_USER: [ROLE_ADMIN, ROLE_VENDEUR, ROLE_GSTION_STOCK]
+
+
 
 when@test:
     security:

@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Utilisateurs {% endblock %}
+
+{% block body %}
+<div class="col-md-6 col-md-offset-3 mt-4 bg-info">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="section_title text-center text-light mb-55 mt-4">
+                <h3><span>Gestion des Utilisateurs</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container row mx-auto mt-4">
+    <div class="panel panel-primary  col-md-6 mt-4">
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-6">
+                <div class="section_title text-center mb-55">
+                    <h3><span>Ajout Utilisateur</span></h3>
+                </div>
+            </div>
+        </div>
+        <div class=" bg-light ">
+            <div class="row">                                
+                <div class="mx-auto mb-100 bg-light">
+                    {{ form(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-md-offset-3 mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section_title text-center mb-55 mt-4">
+                    <h3><span>Liste Utilisateurs</span></h3>
+                </div>
+            </div>
+        </div>
+        <div class="card-body  align-items-end">
+            <div class=" row ">
+                <table class="table table-bordered ">
+                    <thead class="thead-dark">
+                        <div>
+                            <tr class="">
+                                <th class="bg-info">Identifiant</th>
+                                <th class="mx-auto">Prenom & Nom</th>
+                                <th class="mx-auto">Email</th>
+                                <th class="mx-auto">Roles</th>
+                                <th class="mx-auto">Action</th>
+                            </tr>
+                        </div>
+                    </thead>
+                    <tbody>
+                    <tr class="">
+                    {% for u in user %}
+                        <tr>
+                        
+                            <th scope="row">{{ u.id }}</th>
+                            <td class=""><p>{{ u.name }}</p></td>
+                            <td><p>{{ u.email }}</p></td>
+
+                            <td>
+                                {% for role in u.roles %}
+                                {{ role }}
+                                {% endfor %}
+                            </td>
+                            <td><p><a href="{{ path('app_register_modifier', {'id':u.id}) }}" class = "btn btn-warning" >Modifier</a></p></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="container row mx-auto m-4">
+               <button class="btn "> {{ knp_pagination_render(user) }}</button>
+            </div>          
+
+        </div>
+    </div>    
+</div>
+
+{% endblock %}

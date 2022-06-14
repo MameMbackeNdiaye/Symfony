@@ -1,0 +1,87 @@
+<div class="col-md-6 col-md-offset-3 mt-4 bg-info">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="section_title text-center text-light mb-55 mt-4">
+                <h3><span>Gestion des produits</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container row mx-auto mt-4 ">
+    <div class="panel panel-primary  col-md-6 mt-4">
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-6">
+                <div class="section_title text-center mb-55">
+                    <h3><span>Ajout produit</span></h3>
+                </div>
+            </div>
+        </div>
+        <div class="card-body bg-light">
+            <form class="form-contact contact_form form-control w-100" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                <div class="row">                                
+                    <div class="mx-auto">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">libelle</label>
+                            <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer votre email'" placeholder="Entrer votre email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mx-auto">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Stock</label>
+                            <input class="form-control" name="subject" id="subject" type="number" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Enter Votre Mot de passe '" placeholder="Enter Votre Mot de passe">
+                        </div>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="mx-auto">
+                            <div class="form-group mt-3 ">
+                                <button type="submit" class="button button-contactForm boxed-btn">Enregistrer</button>
+                            </div>
+                        </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3 mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section_title text-center mb-55 mt-4">
+                    <h3><span>Liste produit</span></h3>
+                </div>
+            </div>
+        </div>
+        <div class="card-body ">
+            <div class=" row form-contact contact_form">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="bg-info">#</th>
+                            <th class="mx-auto">Libelle</th>
+                            <th class="mx-auto">Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="">
+                        <th scope="row">1</th>
+                        <td class="">#</td>
+                        <td>@</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td class="">#</td>
+                        <td>@</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td  class="">#</td>
+                        <td>@</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>    
+</div>
