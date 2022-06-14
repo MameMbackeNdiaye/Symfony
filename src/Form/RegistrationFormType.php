@@ -55,29 +55,17 @@ class RegistrationFormType extends AbstractType
                 ],
                 'label' => 'Mot de passe'
             ])
-/*       
-            ->add('user_roles', EntityType::class,
-            ['class' => Roles::class,
-            'mapped'=>false,
-            'label' => 'Role',
-            'choice_label' =>function (Roles $nom)
-            {
-                return $nom->getNom();
-            },
-            'multiple' => true,
-            'expanded' =>true,
-            'attr' => array('require'=>'require',
-            'class'=>'form-control p-4')
-            ])
-
+    
+           // ->add('user_roles')
+/*
             ->add('user_roles', EntityType::class,
             ['class' => User::class,
             'attr' => [
                 'class' => 'form-control'],
             'label' => 'Role'
             ])
-*/
-            
+
+ */           
            
            ->add('Valider', SubmitType::class, [
                'attr' => array('
